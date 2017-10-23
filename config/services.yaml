@@ -26,3 +26,5 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand: ~
