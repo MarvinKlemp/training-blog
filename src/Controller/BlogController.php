@@ -23,4 +23,12 @@ class BlogController extends Controller
 
         return $this->render('index.html.twig', ['posts' => $posts]);
     }
+
+    /**
+     * @Route("/{slug}", name="post")
+     */
+    public function showAction(Post $post)
+    {
+        return $this->render('blog/show.html.twig', ['post' => $post]);
+    }
 }
