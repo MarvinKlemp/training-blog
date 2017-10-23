@@ -16,6 +16,6 @@
             </article>
         {% endfor %}
     {% else %}
-        <div class="well">No posts found.</div>
+        <div class="well">{{ 'post.no_posts_found'|trans }}</div>
     {% endif %}
 {% endblock %}
