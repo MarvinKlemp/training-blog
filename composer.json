@@ -7,6 +7,8 @@
         "doctrine/doctrine-bundle": "@dev",
         "doctrine/doctrine-fixtures-bundle": "^2.4",
         "doctrine/orm": "@dev",
+        "erusev/parsedown": "^1.6",
+        "ezyang/htmlpurifier": "^4.9",
         "sensio/framework-extra-bundle": "^5.0",
         "symfony/asset": "^4.0@beta",
         "symfony/console": "^4.0",

@@ -11,6 +11,7 @@
 
 namespace App\DataFixtures\ORM;
 
+use App\Entity\Comment;
 use App\Entity\Post;
 use App\Utils\Slugger;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -53,6 +54,18 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
             $post->setContent($this->getPostContent());
             $post->setAuthorEmail('anna_admin@symfony.com');
             $post->setPublishedAt(new \DateTime('now - '.$i.'days'));
+
+            foreach (range(1, 5) as $j) {
+                $comment = new Comment();
+
+                $comment->setAuthorEmail('john_user@symfony.com');
+                $comment->setPublishedAt(new \DateTime('now + '.($i + $j).'seconds'));
+                $comment->setContent($this->getRandomCommentContent());
+                $comment->setPost($post);
+
+                $manager->persist($comment);
+                $post->addComment($comment);
+            }
 
             $manager->persist($post);
         }
