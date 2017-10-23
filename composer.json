@@ -4,6 +4,9 @@
     "minimum-stability": "beta",
     "require": {
         "php": "^7.0.8",
+        "doctrine/doctrine-bundle": "@dev",
+        "doctrine/doctrine-fixtures-bundle": "^2.4",
+        "doctrine/orm": "@dev",
         "sensio/framework-extra-bundle": "^5.0",
         "symfony/asset": "^4.0@beta",
         "symfony/console": "^4.0",
