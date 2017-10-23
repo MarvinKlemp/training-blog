@@ -5,6 +5,9 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,5 +33,25 @@ class BlogController extends Controller
     public function showAction(Post $post)
     {
         return $this->render('blog/show.html.twig', ['post' => $post]);
+    }
+
+    public function commentFormAction(Post $post)
+    {
+        $form = $this->createFormBuilder();
+        $form
+            ->add('authorEmail', EmailType::class)
+            ->add('content',TextareaType::class, [
+                'attr' => ['rows' => 10],
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Publish a comment',
+                'attr' => ['class' => 'btn-primary pull-right'],
+            ])
+        ;
+
+        return $this->render('blog/_comment_form.html.twig', array(
+            'post' => $post,
+            'form' => $form->getForm()->createView(),
+        ));
     }
 }
