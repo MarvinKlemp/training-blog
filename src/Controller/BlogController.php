@@ -28,7 +28,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/{slug}", name="post")
+     * @Route("/posts/{slug}", name="post")
      */
     public function showAction(Post $post)
     {
