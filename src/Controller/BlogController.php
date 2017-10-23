@@ -15,11 +15,12 @@ class BlogController extends Controller
 {
     /**
      * @Route("", name="index")
+     * @Route("/{page}", name="index_paged", requirements={"page":"\d+"})
      */
-    public function indexAction(): Response
+    public function indexAction($page = 1): Response
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
 
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', ['posts' => $posts]);
     }
 }
