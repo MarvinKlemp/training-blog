@@ -20,7 +20,8 @@ class BlogController extends Controller
      * @Route("", name="index")
      * @Route("/{page}", name="index_paged", requirements={"page":"\d+"})
      */
-    public function indexAction($page = 1): Response
+
+    public function index($page = 1): Response
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
 
@@ -30,7 +31,7 @@ class BlogController extends Controller
     /**
      * @Route("/{slug}", name="post")
      */
-    public function showAction(Post $post)
+    public function show(Post $post)
     {
         return $this->render('blog/show.html.twig', ['post' => $post]);
     }
