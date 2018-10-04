@@ -22,7 +22,8 @@ class BlogController extends Controller
      * @Route("", name="index")
      * @Route("/{page}", name="index_paged", requirements={"page":"\d+"})
      */
-    public function indexAction($page = 1): Response
+
+    public function index($page = 1): Response
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
 
@@ -32,7 +33,7 @@ class BlogController extends Controller
     /**
      * @Route("/posts/{slug}", name="post")
      */
-    public function showAction(Post $post)
+    public function show(Post $post)
     {
         return $this->render('blog/show.html.twig', ['post' => $post]);
     }
@@ -41,7 +42,7 @@ class BlogController extends Controller
      * @Route("/comment/{slug}/new", name="comment_new", methods={"POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
-    public function commentNewAction(Request $request, Post $post)
+    public function commentNew(Request $request, Post $post)
     {
         $form = $this->createForm(CommentType::class);
         $form->handleRequest($request);
@@ -68,7 +69,7 @@ class BlogController extends Controller
         ]);
     }
 
-    public function commentFormAction(Post $post)
+    public function commentForm(Post $post)
     {
         $form = $this->createForm(CommentType::class);
 
