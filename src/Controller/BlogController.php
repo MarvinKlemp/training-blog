@@ -17,7 +17,8 @@ class BlogController extends Controller
      * @Route("", name="index")
      * @Route("/{page}", name="index_paged", requirements={"page":"\d+"})
      */
-    public function indexAction($page = 1): Response
+
+    public function index($page = 1): Response
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
 
