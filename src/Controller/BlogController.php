@@ -15,7 +15,7 @@ class BlogController extends Controller
     /**
      * @Route("", name="index")
      */
-    public function indexAction(): Response
+    public function index(): Response
     {
         return $this->render('index.html.twig');
     }
