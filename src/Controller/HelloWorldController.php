@@ -11,7 +11,7 @@ class HelloWorldController
     /**
      * @Route("/hello/{name}", name="hello_world")
      */
-    public function helloWorldAction(string $name): Response
+    public function helloWorld(string $name): Response
     {
         return new Response(sprintf('Hello %s!', $name));
     }
