@@ -26,7 +26,7 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="security_login")
      */
-    public function loginAction()
+    public function login()
     {
         $helper = $this->get('security.authentication_utils');
 
@@ -46,7 +46,7 @@ class SecurityController extends Controller
      *
      * @Route("/logout", name="security_logout")
      */
-    public function logoutAction()
+    public function logout()
     {
         throw new \Exception('This should never be reached!');
     }
